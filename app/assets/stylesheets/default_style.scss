@@ -11,14 +11,22 @@ body {
 }
 
 section {
+  position:absolute;
+  height:auto;
+  bottom:0; top:0; left:0; right:0;
   background-color: #ffffff;
   margin:1em;
   padding:1em;
   border-radius: 15px;
   font-size: 1.5em;
+
+  &:hover {
+    background-color:#faf9ff;
+  }
 }
 
 button {
+  cursor: pointer;
   display: block;
   position:absolute;
   height:auto;
@@ -32,13 +40,13 @@ h1, h2, h3, h4, h5 {
 
 .title-slide {
   text-align:center;
-}
 
-.title-slide h1 {
-  font-size: 3em;
-  margin:0 auto;
-  position: absolute;
-  top:30%;
+  h1 {
+    font-size: 4em;
+    margin-left:0 auto;
+    position: absolute;
+    top:30%;
+  }
 }
 
 .bullet-slide h2 {

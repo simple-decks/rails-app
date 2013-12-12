@@ -1,8 +1,8 @@
-class PresentationsController < ApplicationController
+class SlidesController < ApplicationController
 
-  def index
+  def edit
     @presentation = Presentation.new
     @default_slide = @presentation.slides[0]
   end
-  
+
 end
