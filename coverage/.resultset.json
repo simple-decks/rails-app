@@ -1,0 +1,25 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/josephoconor/flatiron/simple-decks/rails-app/app/models/presentation.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/josephoconor/flatiron/simple-decks/rails-app/app/models/slide.rb": [
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1386867483
+  }
+}
