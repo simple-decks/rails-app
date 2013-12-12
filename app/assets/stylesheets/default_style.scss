@@ -23,6 +23,19 @@ section {
   &:hover {
     background-color:#faf9ff;
   }
+
+  .edit-slide {
+    form {
+      width: 100%;
+      height: 100%;
+
+      textarea {
+        width: 100%;
+        height: 100%;
+        font-size: inherit;
+      }
+    }
+  }
 }
 
 button {

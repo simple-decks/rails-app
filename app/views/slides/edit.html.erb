@@ -1,5 +1,5 @@
-<section>
+<section class="edit-slide">
 <%= form_for [@presentation, @default_slide] do |f| %>
-    <%= f.text_area :content, placeholder:"New SimpleDeck", class:"title-slide" %>
+    <%= f.text_area :content, class:"title-slide" %>
   <% end %>  
 </section>
