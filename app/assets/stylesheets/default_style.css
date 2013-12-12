@@ -1,0 +1,52 @@
+html{ 
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  position: relative;
+
+  background-color: #eeeeee;
+  font-size: 16px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+section {
+  background-color: #ffffff;
+  margin:1em;
+  padding:1em;
+  border-radius: 15px;
+  font-size: 1.5em;
+}
+
+button {
+  display: block;
+  position:absolute;
+  height:auto;
+  bottom:0; top:0; left:0; right:0;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-top: 0;
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+}
+
+.title-slide {
+  text-align:center;
+}
+
+.title-slide h1 {
+  font-size: 3em;
+  margin:0 auto;
+  position: absolute;
+  top:30%;
+}
+
+.bullet-slide h2 {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.image-slide img {
+  max-width:50%;
+}
+

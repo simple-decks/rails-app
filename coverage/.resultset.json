@@ -1,14 +1,31 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/josephoconor/flatiron/simple-decks/rails-app/app/controllers/presentations_controller.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        null
+      ],
+      "/Users/josephoconor/flatiron/simple-decks/rails-app/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
       "/Users/josephoconor/flatiron/simple-decks/rails-app/app/models/presentation.rb": [
         1,
         1,
         1,
         null,
         1,
-        1,
-        1,
+        5,
+        5,
         null,
         null,
         null
@@ -20,6 +37,6 @@
         null
       ]
     },
-    "timestamp": 1386867483
+    "timestamp": 1386868262
   }
 }
