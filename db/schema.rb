@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212164429) do
+ActiveRecord::Schema.define(version: 20131212205410) do
 
   create_table "presentations", force: true do |t|
     t.string   "author"
@@ -29,5 +29,12 @@ ActiveRecord::Schema.define(version: 20131212164429) do
   end
 
   add_index "slides", ["presentation_id"], name: "index_slides_on_presentation_id"
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
