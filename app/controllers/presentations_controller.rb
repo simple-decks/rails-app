@@ -1,17 +1,38 @@
 class PresentationsController < ApplicationController
-   def index
-    @presentation = current_presentation
-    @default_slide = @presentation.slides[0]
+  before_filter :set_presentation, only: [:new, :show, :edit, :update]
+
+  def index
+   # @presentation = Presentation.find(session[:presentation_id])
+    #@default_slide = @presentation.slides[0]
   end
 
-  def current_presentation
-    if session[:presentation_id]
-      presentation = Presentation.find(session[:presentation_id])
+  def show
+    # if !@presentation
+    #   redirect_to new_presentation_path
+    # else
+  end
+
+  def new
+    @presentation = Presentation.new
+  end
+
+  def create
+    @presentation = Presentation.new(presentation_params)
+
+    if @presentation.save
+      redirect_to @presentation, :notice => "Created the presentation"
     else
-      presentation = Presentation.new
-      session[:presentation_id] = presentation.id
+      render :new
     end
-      return presentation
+  end
+
+  private
+  def set_presentation
+    @presentation = Presentation.find_by(:id => params[:id])
+  end
+
+  def presentation_params
+    params.require(:presentation).permit(:content)
   end
  
 end
