@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212205410) do
+ActiveRecord::Schema.define(version: 20131214134557) do
 
   create_table "presentations", force: true do |t|
     t.string   "author"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content"
   end
 
   create_table "slides", force: true do |t|
