@@ -1,3 +1,6 @@
-<% form_for(@default_slide) do |f| %>
-    <%= f.text_area :content, placeholder:"New SimpleDeck", class:"title-slide" %>
-  <% end %>
+<h1>Edit Presentation</h1>
+<%= form_for(@presentation, :html => { :class => "edit-presentation" }) do |f| %>
+<%= f.text_area :content, placeholder:"Add presentation content" %>
+<p><%= f.submit %>
+</p>
+<% end %>

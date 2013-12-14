@@ -7,9 +7,7 @@ class PresentationsController < ApplicationController
   end
 
   def show
-    # if !@presentation
-    #   redirect_to new_presentation_path
-    # else
+    @presentation = Presentation.first
   end
 
   def new
@@ -23,6 +21,15 @@ class PresentationsController < ApplicationController
       redirect_to @presentation, :notice => "Created the presentation"
     else
       render :new
+    end
+  end
+
+  def update
+    @presentation.update(presentation_params)
+    if @presentation.save
+      redirect_to @presentation, :notice => "Updated!"
+    else
+      render :edit
     end
   end
 

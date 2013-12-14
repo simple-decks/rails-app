@@ -5,7 +5,7 @@ RailsApp::Application.routes.draw do
   #   resources :slides
   # end
 
-  root "presentations#show", :as => :index
+  root "presentations#show"
 
   #get "presentations/:id/slides/:slide_id/edit" => "slides#edit", :as => :edit_slide
 

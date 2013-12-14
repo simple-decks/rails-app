@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: presentations
+#
+#  id         :integer          not null, primary key
+#  author     :string(255)
+#  title      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  content    :string(255)
+#
+
 class Presentation < ActiveRecord::Base
   # has_many :slides
   # after_initialize :default_presentation
