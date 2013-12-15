@@ -1,7 +1,12 @@
-<% @presentation.content.split("---").each do |double_newline| %>
-<section>
-<%= double_newline %>
-</section>
+<div id="presentation-view">  
+<%= render 'view_presentation' %>
+</div>
+
+
+<h1>Edit Presentation</h1>
+<%= form_for(@presentation, :remote => true, :html => { :class => "update-presentation" }) do |f| %>
+<%= f.text_area :content, placeholder:"Add presentation content" %>
+<p><%= f.submit %>
+</p>
 <% end %>
-<p><%= link_to "Edit", edit_presentation_path(@presentation) %></p>
 

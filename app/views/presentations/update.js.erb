@@ -1,0 +1,18 @@
+jQuery.fn.updateSubmit = function(){
+
+  // $(this).parent('form').submit();
+  $(this).submit();
+
+  // $('#presentation-view').replaceWith('<%= j render :partial => "view_presentation", :formats => html %>');
+}
+
+
+$(function(){
+  $('.update-presentation').updateSubmit();
+});
+
+// $(function(){
+// //capture form submit event
+// // replace current div with updated content
+//   $('#presentation-view').append('<%= j render :partial => "view_presentation", :formats => html %>');
+// });

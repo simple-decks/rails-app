@@ -9,7 +9,20 @@ class PresentationsController < ApplicationController
   def show
     @presentation = Presentation.first
     @presentation_with_sections = @presentation.content.gsub("---","TEST")
+  end
 
+
+  def update
+    @presentation.update(presentation_params)
+    if @presentation.save
+      respond_to do |format|
+        format.html {redirect_to @presentation and return}
+        format.js
+      end
+      redirect_to @presentation, :notice => "Updated!"
+    else
+      render :edit
+    end
   end
 
   def new
@@ -23,15 +36,6 @@ class PresentationsController < ApplicationController
       redirect_to @presentation, :notice => "Created the presentation"
     else
       render :new
-    end
-  end
-
-  def update
-    @presentation.update(presentation_params)
-    if @presentation.save
-      redirect_to @presentation, :notice => "Updated!"
-    else
-      render :edit
     end
   end
 
