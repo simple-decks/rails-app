@@ -1,7 +1,3 @@
-<% @presentation.content.split("---").each do |double_newline| %>
-<section>
-<%= double_newline %>
-</section>
-<% end %>
-<p><%= link_to "Edit", edit_presentation_path(@presentation) %></p>
+<%= markdown(@presentation.content) %>
+<%= link_to "Edit", edit_presentation_path(@presentation) %>
 
