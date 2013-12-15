@@ -8,7 +8,6 @@ class PresentationsController < ApplicationController
 
   def show
     @presentation = Presentation.first
-    @presentation_with_sections = @presentation.content.gsub("---","TEST")
   end
 
 
