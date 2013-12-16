@@ -1,54 +1,23 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/Anders/Dropbox/WWW/sd-project/rails-app/app/controllers/presentations_controller.rb": [
-        1,
-        null,
-        1,
-        5,
-        5,
-        null,
-        null,
-        null
-      ],
-      "/Users/Anders/Dropbox/WWW/sd-project/rails-app/app/controllers/application_controller.rb": [
-        1,
-        null,
-        null,
-        1,
-        null
-      ],
-      "/Users/Anders/Dropbox/WWW/sd-project/rails-app/app/models/presentation.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        11,
-        11,
-        11,
+      "/Users/josephoconor/flatiron/simple-decks/rails-app/app/models/presentation.rb": [
         null,
         null,
         null,
-        null
-      ],
-      "/Users/Anders/Dropbox/WWW/sd-project/rails-app/app/models/slide.rb": [
-        1,
-        1,
         null,
-        null
-      ],
-      "/Users/Anders/Dropbox/WWW/sd-project/rails-app/app/controllers/slides_controller.rb": [
-        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         1,
-        1,
-        1,
-        null,
         null,
         null
       ]
     },
-    "timestamp": 1386880996
+    "timestamp": 1387224921
   }
 }

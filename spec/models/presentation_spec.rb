@@ -13,18 +13,16 @@ require 'spec_helper'
 
 describe Presentation do
     
-    context "initialize" do
+  context "presentation content" do
 
-      let(:pres) {Presentation.new}
+    let (:presentation) {Presentation.new(:content => "slide content", :title => "my presentation")}
 
-      it "initializes with one empty slide" do
-
-        expect(pres.slides.count).to eq(1)
-      end
-
-
-
+    it "puts content in a single slide by default" do 
+      expect(presentation.content).to be("<section id='1'>slide content</section>")
     end
+
+
+  end
 
 
 end
