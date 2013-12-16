@@ -1,6 +1,7 @@
 class PresentationsController < ApplicationController
 
-  before_action :presentation_params, :only => [:create, :edit]
+  before_action :presentation_params, :only => [:create]
+  before_action :get_presentation, :only => [:show, :edit, :update ]
 
   def index
     @presentations = Presentation.all
@@ -17,14 +18,22 @@ class PresentationsController < ApplicationController
   end
 
   def show
-    @presentation = Presentation.find(params[:id])
+
   end
 
   def edit
-    @presentation = Presentation.find(params[:id])
 
   end
+
+  def update
+    @presentation.update(presentation_params)
+    redirect_to @presentation
+  end
+
   private
+    def get_presentation
+      @presentation = Presentation.find(params[:id])
+    end
 
     def presentation_params
       params.require(:presentation).permit(:title, :content)
