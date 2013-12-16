@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-mvp_presentation = Presentation.new(
+mvp_presentation = Presentation.create(
   :title => "How to Create A SimpleDeck Presentation",
   :content => <<-eos
   How to Create A SimpleDeck Presentation
