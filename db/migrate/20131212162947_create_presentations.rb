@@ -3,6 +3,7 @@ class CreatePresentations < ActiveRecord::Migration
     create_table :presentations do |t|
       t.string :author
       t.string :title
+      t.string :content
 
       t.timestamps
     end
