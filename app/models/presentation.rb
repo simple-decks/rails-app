@@ -10,5 +10,20 @@
 #
 
 class Presentation < ActiveRecord::Base
+
+  DELIMITER = "\n---\n"
+
+  def make_slides
+    slides = self.content.split(DELIMITER) if self.content
+    renderer = Redcarpet::Render::HTML.new
+    markdown = Redcarpet::Markdown.new(renderer)
+    slides.collect do |slide|
+      markdown.render(slide)
+    end
+  end
+
+  def title_slide
+    
+  end
   
 end
