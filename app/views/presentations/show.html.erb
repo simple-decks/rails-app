@@ -1,6 +1,10 @@
-  <% @presentation_slides.each_with_index do |slide, i| %>
-  <section id='<%= i %>'>
+<% @presentation_slides.each_with_index do |slide, i| %>
+  <% if i == 0 %>
+    <section id='<%= i %>' class="title-slide"><h1><%= slide %></h1></section>
+  <% else %>
+    <section id='<%= i %>'>
     <%= slide %>
-  </section>
+    </section>
   <% end %>
+<% end %>
 <footer><%= link_to "edit", edit_presentation_path(@presentation) %></footer>
