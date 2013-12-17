@@ -1,3 +1,6 @@
-<%= @presentation.content %>
-
+  <%= @presentation_slides.each_with_index do |slide, i| %>
+  <section id='<%= i %>'>
+    <%= slide %>
+  </section>
+  <% end %>
 <footer><%= link_to "edit", edit_presentation_path(@presentation) %></footer>

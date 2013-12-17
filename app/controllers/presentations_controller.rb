@@ -18,7 +18,12 @@ class PresentationsController < ApplicationController
   end
 
   def show
-
+    @presentation_slides = []
+    if @presentation.content.include?("---")
+      @presentation_slides = @presentation.content.split("---").collect {|slide| slide.strip }
+    else
+      @presentation_slides[0] = @presentation.content.strip
+    end
   end
 
   def edit
