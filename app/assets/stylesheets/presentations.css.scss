@@ -1,3 +1,49 @@
-// Place all the styles related to the presentations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body {
+  width: 100%;
+}
+body {
+/*  margin-right: 0;
+  padding-right: 0;*/
+  font-family: helvetica;
+}
+
+textarea {
+  // position: absolute;
+  // top:.5em;
+  // bottom:1em;
+  // left:1em;
+  // right:0;
+  // width: 92%;
+  // font-size: 3.5em;
+  // font-family: helvetica;
+  // border:none;
+  // outline: none;
+  // overflow: auto;
+}
+
+.image {
+  margin:0 auto;
+  width: 90%;
+  height: 90%;
+}
+
+
+blockquote {
+    font-family: helvetica;
+     font-size: 3em;
+}
+footer {
+   position: absolute;
+  bottom:0;
+  left:1em;
+  width: 90%;
+  right:.5em;
+  height: 2em;
+  text-align: center;
+  font-size: 1.8em;
+  color: #bbbbbb;
+}
+
+footer span {
+   font-weight: 700;
+}
