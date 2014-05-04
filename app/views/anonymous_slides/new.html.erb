@@ -1,5 +1,21 @@
-<h1>New anonymous_slide</h1>
+<h1>Welcome to SimpleDecks</h1>
 
-<%= render 'form' %>
+<%= form_for(@anonymous_slide) do |f| %>
+  <% if @anonymous_slide.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@anonymous_slide.errors.count, "error") %> prohibited this anonymous_slide from being saved:</h2>
 
-<%= link_to 'Back', anonymous_slides_path %>
+      <ul>
+      <% @anonymous_slide.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+  <%= f.text_area :content, :autofocus => true, :class => "slide_content required-field" %>
+    <%= f.submit "Continue" %>
+  </div>
+<% end %>
+
