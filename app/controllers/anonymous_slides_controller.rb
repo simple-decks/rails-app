@@ -27,7 +27,7 @@ class AnonymousSlidesController < ApplicationController
     @anonymous_slide = AnonymousSlide.new(anonymous_slide_params)
 
     @presentation = Presentation.new
-    @presentation.title = @anonymous_slide.content
+    @presentation.title = @anonymous_slide.content.lines.first.chomp
     @presentation.slides.build(:content => @anonymous_slide.content)
     @presentation.save
     # binding.pry
