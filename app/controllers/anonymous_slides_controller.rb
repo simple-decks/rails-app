@@ -26,15 +26,33 @@ class AnonymousSlidesController < ApplicationController
   def create
     @anonymous_slide = AnonymousSlide.new(anonymous_slide_params)
 
+    @presentation = Presentation.new
+    @presentation.title = @anonymous_slide.content
+    @presentation.slides.build(:content => @anonymous_slide.content)
+    @presentation.save
+    # binding.pry
+
     respond_to do |format|
-      if @anonymous_slide.save
-        format.html { redirect_to @anonymous_slide, notice: 'Anonymous slide was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @anonymous_slide }
+      if @presentation.save
+        format.html { redirect_to @presentation, notice: 'Presentation  was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @presentation }
       else
         format.html { render action: 'new' }
         format.json { render json: @anonymous_slide.errors, status: :unprocessable_entity }
       end
     end
+
+
+  
+    # respond_to do |format|
+    #   if @anonymous_slide.save
+    #     format.html { redirect_to @anonymous_slide, notice: 'Anonymous slide was successfully created.' }
+    #     format.json { render action: 'show', status: :created, location: @anonymous_slide }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @anonymous_slide.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /anonymous_slides/1
@@ -69,6 +87,6 @@ class AnonymousSlidesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anonymous_slide_params
-      params[:anonymous_slide]
+      params.require(:anonymous_slide).permit(:content)
     end
 end

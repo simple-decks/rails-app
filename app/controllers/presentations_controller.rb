@@ -36,6 +36,7 @@ class PresentationsController < ApplicationController
   end
 
   def show
+    @presentation = Presentation.find(params[:id])
     #find_by token_url
     #if token doesn't match - 404 (later, do a query based on presentation_title value)
 
