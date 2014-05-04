@@ -41,18 +41,6 @@ class AnonymousSlidesController < ApplicationController
         format.json { render json: @anonymous_slide.errors, status: :unprocessable_entity }
       end
     end
-
-
-  
-    # respond_to do |format|
-    #   if @anonymous_slide.save
-    #     format.html { redirect_to @anonymous_slide, notice: 'Anonymous slide was successfully created.' }
-    #     format.json { render action: 'show', status: :created, location: @anonymous_slide }
-    #   else
-    #     format.html { render action: 'new' }
-    #     format.json { render json: @anonymous_slide.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /anonymous_slides/1
