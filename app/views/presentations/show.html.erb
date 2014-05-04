@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>Title:<%= @presentation.title %></p>
+<h1>Title:<%= @presentation.title %></h1>
+<p>Slides:</p>
+<ol>
+<% @presentation.slides.each do |slide| %>
+  <li><%= simple_format(slide.content) %></li>
+<% end %>
+</ol>
+
 
 <%= link_to 'Edit', edit_anonymous_slide_path(@presentation) %> |
 <%= link_to 'Back', anonymous_slides_path %>
