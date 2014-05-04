@@ -8,15 +8,35 @@
 #  content    :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  token_url  :string(255)
 #
 
 class Presentation < ActiveRecord::Base
   has_many :slides
+
+  validates :title, presence: true
   # after_initialize :default_presentation
 
   # def default_presentation
   #   self.slides.build(:slide_type => "title-slide", :content => "New SimpleDeck")
   #   self.save
+  # end
+
+  before_create :generate_token_url
+
+  protected
+
+  def generate_token_url
+    self.token_url = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless Presentation.exists?(token: random_token)
+    end
+  end
+
+  # def generate_url_token(column)
+  #   begin
+  #     self[column] = SecureRandom.urlsafe_base64
+  #   end while Presentation.exists?(column => self[column])    
   # end
 
 end

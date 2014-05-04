@@ -1,0 +1,4 @@
+<%= form_for @slides do |f| %>
+  <%= f.text_area :content, :autofocus => true, :class => "required-field" %>
+  <%= f.submit "Save" %>
+<% end %>

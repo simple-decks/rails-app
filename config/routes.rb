@@ -1,7 +1,13 @@
 RailsApp::Application.routes.draw do
 
-  root "presentations#index", :as => :index
+  #root "slides#new"
 
-  resources :presentations
+  # root "presentations#index", :as => :index
+
+  #get "presentations/:token_url/:presentation_title", to: 'presentations#show'
+
+  resources :presentations do
+    resources :slides
+  end
 
 end

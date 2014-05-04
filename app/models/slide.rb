@@ -12,5 +12,5 @@
 
 class Slide < ActiveRecord::Base
   belongs_to :presentation
-
+  validates :content, :presence => {:message => 'Slides cannot be empty'}
 end
