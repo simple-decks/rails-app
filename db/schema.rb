@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503231401) do
+ActiveRecord::Schema.define(version: 20140504151204) do
+
+  create_table "anonymous_slides", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "content"
+  end
 
   create_table "presentations", force: true do |t|
     t.string   "author"

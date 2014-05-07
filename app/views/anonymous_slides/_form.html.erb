@@ -1,0 +1,18 @@
+<%= form_for(@anonymous_slide) do |f| %>
+  <% if @anonymous_slide.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@anonymous_slide.errors.count, "error") %> prohibited this anonymous_slide from being saved:</h2>
+
+      <ul>
+      <% @anonymous_slide.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+  <%= f.text_area :content, :autofocus => true, :class => "required-field" %>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -22,7 +22,7 @@ class Presentation < ActiveRecord::Base
   #   self.save
   # end
 
-  before_create :generate_token_url
+  # before_create :generate_token_url
 
   protected
 
