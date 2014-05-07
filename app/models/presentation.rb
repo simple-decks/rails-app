@@ -9,6 +9,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  token_url  :string(255)
+#  url_token  :string(255)
 #
 
 class Presentation < ActiveRecord::Base
@@ -22,21 +23,21 @@ class Presentation < ActiveRecord::Base
   #   self.save
   # end
 
-  # before_create :generate_token_url
+  before_create :generate_url_token
 
   protected
 
-  def generate_token_url
-    self.token_url = loop do
-      random_token = SecureRandom.urlsafe_base64(nil, false)
-      break random_token unless Presentation.exists?(token: random_token)
-    end
-  end
-
-  # def generate_url_token(column)
-  #   begin
-  #     self[column] = SecureRandom.urlsafe_base64
-  #   end while Presentation.exists?(column => self[column])    
+  # def generate_token_url
+  #   self.token_url = loop do
+  #     random_token = SecureRandom.urlsafe_base64(nil, false)
+  #     break random_token unless Presentation.exists?(token: random_token)
+  #   end
   # end
+
+  def generate_url_token
+    begin
+      self[:url_token] = SecureRandom.urlsafe_base64(8)
+    end while Presentation.exists?(:url_token => self[:url_token])    
+  end
 
 end

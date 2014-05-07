@@ -17,13 +17,21 @@ class SlidesController < ApplicationController
   end
 
   def create
+
     @presentation = Presentation.find(params[:presentation_id])
-    @presentation.slides.build(slide_params)
-    @presentation.save
-    # binding.pry
+    @slide = @presentation.slides.build
+
+    # unless Presentation.find(params[:presentation][:presentation_id]) do
+    #   @presentation = Presentation.find(params[:presentation_id])
+    #   @presentation.slides.build(slide_params)
+    #   @presentation.save
+    # end
 
     respond_to do |format|
-      if @presentation.save
+      if @slide.save
+
+        # will want to just render the slide
+        
         format.html { redirect_to @presentation, notice: 'Slide was successfully added.' }
         format.json { render action: 'show', status: :created, location: @presentation }
       else

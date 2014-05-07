@@ -12,32 +12,17 @@ class PresentationsController < ApplicationController
 
   def create
     @presentation = Presentation.new
-    @slides = @presentation.slides.build
-    # binding.pry
-
-    # presentation_title
-
-    # @slides[0].content.each_line do |line|
-    #   first_line = 
-    # end
-    
-
-
-    # #set presentation title based on value of first line in first slide
-    # # @presentation.title = 
-    # #step through each character in slide[0].content
-    # # add the character to presentation.title until a \n is found
-
-    # if @presentation.save
-    # end
-
-    #set presentation title based on value of first line in first slide
-    #convert presentation title to title portion of presentation url - maybe use url slug gem for this
+    @slides = @presentation.slides.build 
   end
 
   def show
-    @presentation = Presentation.find(params[:id])
-    #find_by token_url
+     @presentation = Presentation.find_by :url_token => params[:url_token]
+
+     # params[:url_token] = @presentation.url_token
+    #     params[:presentation_title] = "test-title"
+    # # @presentation = Presentation.find(params[:url_token])
+    # @presentation = Presentation.find(params[:id])
+    # #find_by token_url
     #if token doesn't match - 404 (later, do a query based on presentation_title value)
 
     #if token matches
