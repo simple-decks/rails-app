@@ -34,7 +34,7 @@ class Presentation < ActiveRecord::Base
   end
 
   def generate_url_title
-    url_title = self.title.downcase.strip
+    url_title = self.title.downcase.strip.truncate(50)
 
     url_title.gsub! " ", "-"
 
