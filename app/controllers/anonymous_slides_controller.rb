@@ -29,13 +29,14 @@ class AnonymousSlidesController < ApplicationController
     @presentation = Presentation.new
     @presentation.title = @anonymous_slide.content.lines.first.chomp
     @presentation.slides.build(:content => @anonymous_slide.content)
-    @presentation.save
-    # binding.pry
 
     respond_to do |format|
       if @presentation.save
-        format.html { redirect_to @presentation, notice: 'Presentation  was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @presentation }
+        params[:url_token] = @presentation.url_token
+        params[:presentation_title] = @presentation.url_title
+
+        format.html { redirect_to token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Presentation  was successfully created.' }
+        format.json { render action: 'show', status: :created, location:token_url_path }
       else
         format.html { render action: 'new' }
         format.json { render json: @anonymous_slide.errors, status: :unprocessable_entity }
