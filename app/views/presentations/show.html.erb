@@ -1,5 +1,5 @@
 <h1>Title:<%= @presentation.title %></h1>
-<button class="fullscreen">Enter Fullscreen mode (Document)</button>
+<button class="fullscreen edit-control"><%= image_tag "icons/play_icon.png", alt: "Present"%></button>
 <p>Slides:</p>
 <ol>
 <% @presentation.slides.each do |slide| %>
