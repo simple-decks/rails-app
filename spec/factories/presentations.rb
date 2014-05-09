@@ -9,6 +9,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  url_token  :string(255)
+#  url_title  :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

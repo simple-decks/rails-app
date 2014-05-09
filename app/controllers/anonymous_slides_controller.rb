@@ -33,9 +33,9 @@ class AnonymousSlidesController < ApplicationController
     respond_to do |format|
       if @presentation.save
         params[:url_token] = @presentation.url_token
-        params[:presentation_title] = "test-title"
+        params[:presentation_title] = @presentation.url_title
 
-        format.html { redirect_to token_url_path(@presentation.url_token, "test-title"), notice: 'Presentation  was successfully created.' }
+        format.html { redirect_to token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Presentation  was successfully created.' }
         format.json { render action: 'show', status: :created, location:token_url_path }
       else
         format.html { render action: 'new' }

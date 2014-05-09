@@ -9,6 +9,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  url_token  :string(255)
+#  url_title  :string(255)
 #
 
 require 'spec_helper'
