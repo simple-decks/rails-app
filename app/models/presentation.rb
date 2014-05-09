@@ -25,6 +25,10 @@ class Presentation < ActiveRecord::Base
 
   before_create :generate_url_token, :generate_url_title
 
+  # def to_param
+  #   "#{id} #{title}".parameterize
+  # end
+
   protected
 
   def generate_url_token
