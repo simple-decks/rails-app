@@ -26,8 +26,12 @@ group :test, :development do
   gem "binding_of_caller"
   gem "terminal-notifier-guard"
   gem "factory_girl_rails"
-  gem "simplecov"
   gem "database_cleaner"
   gem "guard", ">=2.1.0"
   gem "guard-rspec"
 end
+
+group :test do
+  gem "simplecov"
+end
+
