@@ -1,0 +1,17 @@
+<header>
+  <h1><%= @presentation.title %></h1>
+<button class="fullscreen edit-control"><%= image_tag "icons/play_icon.png", alt: "Present"%></button>
+<%= link_to 'New Slide', new_presentation_slide_path(@presentation) %>
+</header>
+<nav class="thumbnails">
+<ol>
+<% @presentation.slides.each do |slide| %>
+  <li><%= simple_format(slide.content) %></li>
+  <li>[current slide]</li>
+<% end %>
+</ol>
+</nav>
+<section class="current-slide">
+  <p>Current slide</p>
+</section>
+

@@ -15,6 +15,7 @@ class AnonymousSlidesController < ApplicationController
   # GET /anonymous_slides/new
   def new
     @anonymous_slide = AnonymousSlide.new
+    @presentations = Presentation.all
   end
 
   # GET /anonymous_slides/1/edit
@@ -25,7 +26,6 @@ class AnonymousSlidesController < ApplicationController
   # POST /anonymous_slides.json
   def create
     @anonymous_slide = AnonymousSlide.new(anonymous_slide_params)
-
     @presentation = Presentation.new
     @presentation.title = @anonymous_slide.content.lines.first.chomp
     @presentation.slides.build(:content => @anonymous_slide.content)
@@ -35,7 +35,7 @@ class AnonymousSlidesController < ApplicationController
         params[:url_token] = @presentation.url_token
         params[:presentation_title] = @presentation.url_title
 
-        format.html { redirect_to token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Presentation  was successfully created.' }
+        format.html { redirect_to edit_token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Presentation  was successfully created.' }
         format.json { render action: 'show', status: :created, location:token_url_path }
       else
         format.html { render action: 'new' }

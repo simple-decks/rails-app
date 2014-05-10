@@ -15,7 +15,7 @@ class PresentationsController < ApplicationController
     @slides = @presentation.slides.build 
   end
 
-  def show
+  def edit
      @presentation = Presentation.find_by :url_token => params[:url_token]
 
      # params[:url_token] = @presentation.url_token
@@ -23,11 +23,15 @@ class PresentationsController < ApplicationController
     # # @presentation = Presentation.find(params[:url_token])
     # @presentation = Presentation.find(params[:id])
     # #find_by token_url
-    #if token doesn't match - 404 (later, do a query based on presentation_title value)
+   
 
     #if token matches
 
     #redirect to full url based on ma
+  end
+
+  def show
+     @presentation = Presentation.find_by :url_token => params[:url_token]
   end
 
 end
