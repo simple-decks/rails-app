@@ -33,8 +33,9 @@ class SlidesController < ApplicationController
   end
 
   def create
+    @presentation = Presentation.where(:url_token => params[:presentation_id]).first
 
-    @presentation = Presentation.find(params[:presentation_id])
+    # @presentation = Presentation.find(params[:presentation_id])
     @slide = @presentation.slides.build(slide_params)
 
     # unless Presentation.find(params[:presentation][:presentation_id]) do

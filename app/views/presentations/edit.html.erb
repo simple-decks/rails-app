@@ -7,7 +7,6 @@
 <ol>
 <% @presentation.slides.each do |slide| %>
   <li><%= simple_format(slide.content) %></li>
-  <li>[current slide]</li>
 <% end %>
 </ol>
 </nav>

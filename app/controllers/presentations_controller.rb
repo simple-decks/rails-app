@@ -17,6 +17,7 @@ class PresentationsController < ApplicationController
 
   def edit
      @presentation = Presentation.find_by :url_token => params[:url_token]
+     @ordered_slides = @presentation.slides(:order => 'created_at DESC')
 
      # params[:url_token] = @presentation.url_token
     #     params[:presentation_title] = "test-title"
