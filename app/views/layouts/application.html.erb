@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= @presentation ? @presentation.title : "Simple Decks" %></title>
+  <title><%= @presentation ? "#{@presentation.title} - A SimpleDeck Presentation" : "Simple Decks - Create and Share Presentations in Minutes" %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>

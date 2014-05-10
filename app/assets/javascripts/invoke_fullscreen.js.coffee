@@ -11,6 +11,10 @@ $(document).ready ->
   #      $("#status").text($(document).fullScreen() ? 
   #          "Full screen enabled" : "Full screen disabled");
   #   });
+  # $(document).bind "fullscreenchange", (e) ->
+  #      $(".edit-control").hide($(document).fullScreen() ? 
+  #          "Full screen enabled" : "Full screen disabled");
+  #   });
 
   $(".fullscreen").click ->
     $(document).fullScreen(true)
