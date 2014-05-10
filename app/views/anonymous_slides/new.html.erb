@@ -17,5 +17,12 @@
   <%= f.text_area :content, :autofocus => true, :class => "slide_content required-field" %>
     <%= f.submit "Continue" %>
   </div>
+  <nav class="presentations">
+  <ol>
+  <% @presentations.each do |presentation| %>
+    <li><%= link_to presentation.title, presentation %></li>
+    <% end %>
+  </ol>
+  </nav>
 <% end %>
 
