@@ -6,7 +6,7 @@
 <nav class="thumbnails">
 <ol>
 <% @slide_nav.each do |slide| %>
-  <li><%= simple_format(slide.content) %></li>
+  <li><%= link_to simple_format(slide.content), edit_presentation_slide_path(@presentation, slide) %></li>
 <% end %>
 </ol>
 </nav>

@@ -26,10 +26,11 @@ class SlidesController < ApplicationController
     #   params[:presentation_id] = @presentation.id
     #   #render "new_no_presentation"
     # else
-      @presentation = Presentation.find(params[:presentation_id])
-      @slide = @presentation.slides.build
+      # @presentation = Presentation.find(params[:presentation_id])
+      # @slide = @presentation.slides.build
     # end
-
+    @presentation = Presentation.where(:url_token => params[:presentation_id]).first
+    @slide = @presentation.slides.find(params[:id])
   end
 
   def create
@@ -77,6 +78,8 @@ class SlidesController < ApplicationController
 
         params[:url_token] = @presentation.url_token
         params[:presentation_title] = @presentation.url_title
+        params[:current_slide] = @slide.id
+
         
         format.html { redirect_to edit_token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Slide was successfully updated.' }
         format.json { render action: 'show', status: :created, location: @presentation }

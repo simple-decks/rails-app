@@ -18,7 +18,12 @@ class PresentationsController < ApplicationController
   def edit
      @presentation = Presentation.find_by :url_token => params[:url_token]
      @slide_nav = @presentation.slides(:order => 'created_at DESC')
-     @current_slide = @presentation.slides.first
+
+     if params[:current_slide]
+       @current_slide = @presentation.slides.find(params[:current_slide])
+     else
+       @current_slide = @presentation.slides.first
+     end
   end
 
   def show
