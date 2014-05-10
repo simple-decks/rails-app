@@ -17,18 +17,8 @@ class PresentationsController < ApplicationController
 
   def edit
      @presentation = Presentation.find_by :url_token => params[:url_token]
-     @ordered_slides = @presentation.slides(:order => 'created_at DESC')
-
-     # params[:url_token] = @presentation.url_token
-    #     params[:presentation_title] = "test-title"
-    # # @presentation = Presentation.find(params[:url_token])
-    # @presentation = Presentation.find(params[:id])
-    # #find_by token_url
-   
-
-    #if token matches
-
-    #redirect to full url based on ma
+     @slide_nav = @presentation.slides(:order => 'created_at DESC')
+     @current_slide = @presentation.slides.first
   end
 
   def show

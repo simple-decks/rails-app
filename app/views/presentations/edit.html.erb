@@ -5,12 +5,15 @@
 </header>
 <nav class="thumbnails">
 <ol>
-<% @presentation.slides.each do |slide| %>
+<% @slide_nav.each do |slide| %>
   <li><%= simple_format(slide.content) %></li>
 <% end %>
 </ol>
 </nav>
 <section class="current-slide">
-  <p>Current slide</p>
+<h1>Edit Slide</h1>
+<%= form_for [@presentation, @current_slide] do |f| %>
+  <%= f.text_area :content, :autofocus => true, :class => "required-field" %>
+  <%= submit_tag "Save" %>
+<% end %>
 </section>
-
