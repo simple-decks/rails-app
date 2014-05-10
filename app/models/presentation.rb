@@ -16,14 +16,10 @@ class Presentation < ActiveRecord::Base
   has_many :slides
 
   validates :title, presence: true
-  # after_initialize :default_presentation
+  validates :url_token, uniqueness: true, presence: true
+  validates :url_title, uniqueness: true, presence: true
 
-  # def default_presentation
-  #   self.slides.build(:slide_type => "title-slide", :content => "New SimpleDeck")
-  #   self.save
-  # end
-
-  before_create :generate_url_token, :generate_url_title
+  before_validation :generate_url_token, :generate_url_title
 
   # def to_param
   #   "#{id} #{title}".parameterize

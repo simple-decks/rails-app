@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509132538) do
+ActiveRecord::Schema.define(version: 20140510185648) do
 
   create_table "anonymous_slides", force: true do |t|
     t.datetime "created_at"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20140509132538) do
     t.string   "url_token"
     t.string   "url_title"
   end
+
+  add_index "presentations", ["url_title"], name: "index_presentations_on_url_title"
+  add_index "presentations", ["url_token"], name: "index_presentations_on_url_token"
 
   create_table "slides", force: true do |t|
     t.integer  "presentation_id"
