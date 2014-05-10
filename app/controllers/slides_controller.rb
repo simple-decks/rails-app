@@ -10,7 +10,7 @@ class SlidesController < ApplicationController
     #   params[:presentation_id] = @presentation.id
     #   #render "new_no_presentation"
     # else
-      @presentation = Presentation.find(params[:presentation_id])
+      @presentation = Presentation.where(:url_token => params[:presentation_id]).first
       @slide = @presentation.slides.build
     # end
 
@@ -49,11 +49,11 @@ class SlidesController < ApplicationController
         params[:url_token] = @presentation.url_token
         params[:presentation_title] = @presentation.url_title
         
-        format.html { edit_token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Slide was successfully added.' }
+        format.html { redirect_to edit_token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Slide was successfully added.' }
         format.json { render action: 'show', status: :created, location: @presentation }
       else
         format.html { render action: 'new' }
-        format.json { render json: @anonymous_slide.errors, status: :unprocessable_entity }
+        format.json { render json: @slide.errors, status: :unprocessable_entity }
       end
     end
   end
