@@ -20,7 +20,7 @@
   <nav class="presentations">
   <ol>
   <% @presentations.each do |presentation| %>
-    <li><%= link_to presentation.title, presentation %></li>
+    <li><%= link_to presentation.title, token_url_path(presentation.url_token, presentation.url_title) %></li>
     <% end %>
   </ol>
   </nav>

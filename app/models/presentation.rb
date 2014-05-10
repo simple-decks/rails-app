@@ -14,23 +14,27 @@
 
 class Presentation < ActiveRecord::Base
   has_many :slides
-
-  validates :title, presence: true
-  validates :url_token, uniqueness: true, presence: true
-  validates :url_title, uniqueness: true, presence: true
-
+  # validates :title, presence: true
+  # validates :url_token, uniqueness: true, presence: true
+  # validates :url_title, uniqueness: true, presence: true
   before_validation :generate_url_token, :generate_url_title
 
-  # def to_param
-  #   "#{id} #{title}".parameterize
-  # end
+  def to_param
+    url_token
+  end
 
   protected
 
+  # def generate_url_token
+  #   begin
+  #     self[:url_token] = SecureRandom.urlsafe_base64(8)
+  #   end while Presentation.exists?(:url_token => self[:url_token])    
+  # end
+
   def generate_url_token
     begin
-      self[:url_token] = SecureRandom.urlsafe_base64(8)
-    end while Presentation.exists?(:url_token => self[:url_token])    
+      self.url_token = SecureRandom.urlsafe_base64(8)
+    end while Presentation.exists?(:url_token => self.url_token)    
   end
 
   def generate_url_title
