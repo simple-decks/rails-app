@@ -18,6 +18,11 @@ group :development do
   gem 'annotate', ">=2.6.0"
 end
 
+group :assets do
+  gem 'compass-rails'
+end
+
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
