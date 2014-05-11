@@ -1,19 +1,30 @@
 <header>
-  <h1><%= @presentation.title %></h1>
-<button class="fullscreen edit-control"><%= image_tag "icons/play_icon.png", alt: "Present"%></button>
-<%= link_to 'New Slide', new_presentation_slide_path(@presentation) %>
+  <section class="user-nav">
+    <a href="#" title="">Sign in via Twitter</a> to save this deck for later.
+  </section>
+  <section>
+    <h1><%= @presentation.title %></h1>  
+  </section>
+  <section class="presentation-options">
+    <nav>
+      <ul>
+          <li><a href="#" title="">Play</a></li>
+          <li><a href="#" title="">Share</a></li>
+          <li><%= link_to 'New Slide', new_presentation_slide_path(@presentation) %></li>
+        </ul>
+    </nav>
+  </section>
 </header>
-<nav class="thumbnails">
-<ol>
-<% @slide_nav.each do |slide| %>
-  <li><%= link_to simple_format(slide.content), edit_presentation_slide_path(@presentation, slide) %></li>
-<% end %>
-</ol>
-</nav>
 <section class="current-slide">
-<h1>Edit Slide</h1>
 <%= form_for [@presentation, @current_slide] do |f| %>
   <%= f.text_area :content, :autofocus => true, :class => "required-field" %>
   <%= submit_tag "Save" %>
 <% end %>
 </section>
+<nav class="slide-nav">
+  <ol>
+  <% @slide_nav.each do |slide| %>
+    <li><%= link_to simple_format(slide.content), edit_presentation_slide_path(@presentation, slide) %></li>
+  <% end %>
+  </ol>
+</nav>
