@@ -1,30 +1,41 @@
-<header>
-  <section class="user-nav">
-    <a href="#" title="">Sign in via Twitter</a> to save this deck for later.
-  </section>
-  <section>
+<header class="editor-header">
+<div class="display-table ">
+  <div class="table-row">
+ <section class="user-nav table-cell">
     <h1><%= @presentation.title %></h1>  
   </section>
-  <section class="presentation-options">
-    <nav>
-      <ul>
+   <section class="user-nav table-cell">
+    <a href="#" title="">Sign in via Twitter</a> to save this deck for later.
+  </section>
+  </div>
+  <div class="table-row">
+    <section class="table-cell presentation-options">
+      <nav>
+        <ul class="horizontal-list">
           <li><a href="#" title="">Play</a></li>
           <li><a href="#" title="">Share</a></li>
           <li><%= link_to 'New Slide', new_presentation_slide_path(@presentation) %></li>
         </ul>
-    </nav>
-  </section>
+      </nav>
+    </section>
+  </div>
+  </div>
 </header>
-<section class="current-slide">
-<%= form_for [@presentation, @current_slide] do |f| %>
-  <%= f.text_area :content, :autofocus => true, :class => "required-field" %>
-  <%= submit_tag "Save" %>
-<% end %>
-</section>
-<nav class="slide-nav">
+<div class="main-content display-table">
+<div class="table-row">
+  <nav class="slide-nav table-cell">
   <ol>
   <% @slide_nav.each do |slide| %>
     <li><%= link_to simple_format(slide.content), edit_presentation_slide_path(@presentation, slide) %></li>
   <% end %>
   </ol>
 </nav>
+<section class="current-slide table-cell">
+<%= form_for [@presentation, @current_slide] do |f| %>
+  <%= f.text_area :content, :autofocus => true, :class => "required-field" %>
+  <%= submit_tag "Save" %>
+<% end %>
+</section>
+</div>
+</div>
+
