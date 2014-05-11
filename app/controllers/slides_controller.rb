@@ -10,7 +10,7 @@ class SlidesController < ApplicationController
     #   params[:presentation_id] = @presentation.id
     #   #render "new_no_presentation"
     # else
-      @presentation = Presentation.find(params[:presentation_id])
+      @presentation = Presentation.where(:url_token => params[:presentation_id]).first
       @slide = @presentation.slides.build
     # end
 
@@ -26,15 +26,17 @@ class SlidesController < ApplicationController
     #   params[:presentation_id] = @presentation.id
     #   #render "new_no_presentation"
     # else
-      @presentation = Presentation.find(params[:presentation_id])
-      @slide = @presentation.slides.build
+      # @presentation = Presentation.find(params[:presentation_id])
+      # @slide = @presentation.slides.build
     # end
-
+    @presentation = Presentation.where(:url_token => params[:presentation_id]).first
+    @slide = @presentation.slides.find(params[:id])
   end
 
   def create
+    @presentation = Presentation.where(:url_token => params[:presentation_id]).first
 
-    @presentation = Presentation.find(params[:presentation_id])
+    # @presentation = Presentation.find(params[:presentation_id])
     @slide = @presentation.slides.build(slide_params)
 
     # unless Presentation.find(params[:presentation][:presentation_id]) do
@@ -49,11 +51,41 @@ class SlidesController < ApplicationController
         params[:url_token] = @presentation.url_token
         params[:presentation_title] = @presentation.url_title
         
-        format.html { edit_token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Slide was successfully added.' }
+        format.html { redirect_to edit_token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Slide was successfully added.' }
         format.json { render action: 'show', status: :created, location: @presentation }
       else
         format.html { render action: 'new' }
-        format.json { render json: @anonymous_slide.errors, status: :unprocessable_entity }
+        format.json { render json: @slide.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @presentation = Presentation.where(:url_token => params[:presentation_id]).first
+
+    # @presentation = Presentation.find(params[:presentation_id])
+    @slide = @presentation.slides.find(params[:id])
+    @slide.update(slide_params)
+
+    # unless Presentation.find(params[:presentation][:presentation_id]) do
+    #   @presentation = Presentation.find(params[:presentation_id])
+    #   @presentation.slides.build(slide_params)
+    #   @presentation.save
+    # end
+
+    respond_to do |format|
+      if @slide.save
+
+        params[:url_token] = @presentation.url_token
+        params[:presentation_title] = @presentation.url_title
+        params[:current_slide] = @slide.id
+
+        
+        format.html { redirect_to edit_token_url_path(@presentation.url_token, @presentation.url_title), notice: 'Slide was successfully updated.' }
+        format.json { render action: 'show', status: :created, location: @presentation }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @slide.errors, status: :unprocessable_entity }
       end
     end
   end
