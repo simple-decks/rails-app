@@ -1,4 +1,4 @@
-<header class="editor-header" ng-app="presentationEditor">
+<header class="editor-header" ng-controller="presHeaderCtrl">
 <div class="display-table ">
   <div class="table-row">
  <section class="user-nav table-cell">
@@ -23,11 +23,12 @@
 </header>
 <div class="main-content display-table">
 <div class="table-row">
-  <nav class="slide-nav table-cell">
+  <nav class="slide-nav table-cell" ng-controller="SlideEditorNavCtrl">
   <ol>
-  <% @slide_nav.each do |slide| %>
-    <li><%= link_to simple_format(slide.content), edit_presentation_slide_path(@presentation, slide) %></li>
-  <% end %>
+   <div class="row" ng-repeat="slide in data.slides">
+  <%# @slide_nav.each do |slide| %>
+    <li>{{slide.title}}<%#= link_to simple_format(slide.content), edit_presentation_slide_path(@presentation, slide) %></li>
+  <%# end %>
   </ol>
 </nav>
 <section class="current-slide table-cell">
