@@ -1,5 +1,5 @@
-<!-- <button>
-  <section class="<%#=@default_slide.slide_type%>">
-  <h1><%#= @default_slide.content %></h1>
-  </section>
-</button> -->
+<div ng-controller="PresentationsCtrl">
+  <ul>
+  <li ng-repeat="presentation in presentations">{{presentation.title}}</li>
+</ul>
+</div>

@@ -1,5 +1,10 @@
 <h1>Welcome to SimpleDecks</h1>
-
+<div ng-controller="AnonymouseSlideCtrl">
+<form ng-submit="newPresentationFromSlide()">
+    <input type="text" ng-model="newEntry.name">
+    <input type="submit" value="Add">
+</form>
+</div>
 <%= form_for(@anonymous_slide) do |f| %>
   <% if @anonymous_slide.errors.any? %>
     <div id="error_explanation">

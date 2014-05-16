@@ -1,8 +1,8 @@
 class PresentationsController < ApplicationController
+  respond_to :json, :html
 
   def index
-    @presentation = Presentation.new
-    @default_slide = @presentation.slides[0]
+    respond_with Presentation.all
   end
 
   def new

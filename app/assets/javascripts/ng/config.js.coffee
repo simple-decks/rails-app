@@ -1,33 +1,34 @@
-# # Creates new Angular module called 'Blog'
-# SimpleDecks = angular.module('SimpleDecks', [])
-
-# # Sets up routing
-# SimpleDecks.config(['$routeProvider', ($routeProvider) ->
-#   # Route for '/post'
-#   $routeProvider.when('/post', { templateUrl: '../assets/mainPost.html', controller: 'PostCtrl' } )
-
-#   # Default
-#   $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html', controller: 'IndexCtrl' } )
-
-# ])
-
-app = angular.module("SimpleDecks", ["ngResource"])
+# app = angular.module("SimpleDecks", ["ngResource"])
 
 # app.factory "Presentation", ["$resource", ($resource) ->
-#   $resource("/presentations/:id", {id: "@id"})
+#   $resource("/presentations/:id", {id: "@id", format: 'json'})
 # ]
 
-# app.factory "Presentation", ["$resource", ($resource) ->
-# $resource("/presentations/:id.json", {id: "@id"}, {query: {method: "GET"}})
-# ]
-# , 
+# @PresentationsCtrl = ["$scope", "Presentation", ($scope, Presentation) ->
+#   $scope.presentations = Presentation.query()
 
-@PresentationNavCtrl = ($scope, $resource) ->
-  Presentation = $resource("/presentations/:id",{id: "@id"}, {'query': {method: 'GET', isArray: false}})
+#   # $scope.addEntry = ->
+#   #   entry = Entry.save($scope.newEntry)
+#   #   $scope.entries.push(entry)
+#   #   $scope.newEntry = {}
+
+#   # $scope.drawWinner = ->
+#   #   entry = $scope.entries[Math.floor(Math.random()*$scope.entries.length)]
+# ]
+ 
+# @PresentationNavCtrl = ($scope, $resource) ->
+#   Presentation = $resource("/presentations/:id",{id: "@id"}, {'query': {method: 'GET', isArray: false}})
   
-  $scope.presentations = Presentation.query()
-  # [
-  #   {title: "First Presentation"}
-  #   {title: "Second Presentation"}
-  #   {title: "Third Presentation"}
-  # ]
+#   $scope.presentations = Presentation.query()
+ 
+# @RaffleCtrl = ["$scope", "Entry", ($scope, Entry) ->
+#   $scope.entries = Entry.query()
+
+#   $scope.addEntry = ->
+#     entry = Entry.save($scope.newEntry)
+#     $scope.entries.push(entry)
+#     $scope.newEntry = {}
+
+#   $scope.drawWinner = ->
+#     entry = $scope.entries[Math.floor(Math.random()*$scope.entries.length)]
+# ]
