@@ -1,6 +1,8 @@
 class AnonymousSlidesController < ApplicationController
   before_action :set_anonymous_slide, only: [:show, :edit, :update, :destroy]
 
+  respond_to :json, :html
+
   # GET /anonymous_slides
   # GET /anonymous_slides.json
   def index
@@ -16,6 +18,9 @@ class AnonymousSlidesController < ApplicationController
   def new
     @anonymous_slide = AnonymousSlide.new
     @presentations = Presentation.all
+    respond_with Presentation.all
+    # render json: @presentations
+    # respond_with :json, :html
   end
 
   # GET /anonymous_slides/1/edit
