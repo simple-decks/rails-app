@@ -1,16 +1,14 @@
-# app.factory "Presentation", ["$resource", ($resource) ->
-#   $resource("/presentations/:id", {id: "@id", format: 'json'})
-# ]
+app = angular.module("SimpleDecks", ["ngResource"])
 
-# @PresentationsCtrl = ["$scope", "Presentation", ($scope, Presentation) ->
-#   $scope.presentations = Presentation.query()
+app.factory "Presentation", ["$resource", ($resource) ->
+  $resource("/presentations/:url_token", {id: "@url_token", format: 'json'})
+]
 
-#   # $scope.addEntry = ->
-#   #   entry = Entry.save($scope.newEntry)
-#   #   $scope.entries.push(entry)
-#   #   $scope.newEntry = {}
+@PresentationsCtrl = ["$scope", "Presentation", ($scope, Presentation) ->
+  $scope.presentations = Presentation.query()
 
-#   # $scope.drawWinner = ->
-#   #   entry = $scope.entries[Math.floor(Math.random()*$scope.entries.length)]
-# ]
-#  
+  $scope.addPresentation = ->
+    presentation = Presentation.save($scope.newPresentation)
+    $scope.presentations.push(presentation)
+    $scope.newPresentation = {}
+]
