@@ -1,3 +1,3 @@
-@presHeaderCtrl = ($scope) ->
-  $scope.data = 
-    presentations: [{title: "prez title"}]
+# @presHeaderCtrl = ($scope) ->
+#   $scope.data = 
+#     presentations: [{title: "prez title"}]
