@@ -4,9 +4,6 @@ RailsApp::Application.routes.draw do
 
   resources :anonymous_slides
 
-  
-  # root "presentations#index", :as => :index
-
   get ":url_token/:url_title/edit", :as => :edit_token_url, to: 'presentations#edit'
   # get ":url_token/*/edit", :as => :edit_token_url, to: 'presentations#edit'
 
