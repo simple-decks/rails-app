@@ -1,50 +1,12 @@
 <h1>Welcome to SimpleDecks</h1>
-<div ng-controller="AnonymouseSlideCtrl">
-<form ng-submit="newPresentationFromSlide()">
-    <input type="text" ng-model="newEntry.name">
+<div ng-controller="AnonymousSlideCtrl">
+
+  <form ng-submit="addPresentation()">
+    <textarea ng-model="newPresentation.title" ng-keyup="submitOnDoubleReturn($event.keyCode)"placeholder="New Presentation"></textarea>
     <input type="submit" value="Add">
-</form>
-</div>
-<%= form_for(@anonymous_slide) do |f| %>
-  <% if @anonymous_slide.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@anonymous_slide.errors.count, "error") %> prohibited this anonymous_slide from being saved:</h2>
+  </form>
 
-      <ul>
-      <% @anonymous_slide.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-  <%= f.text_area :content, :autofocus => true, :class => "slide_content required-field" %>
-    <%= f.submit "Continue" %>
-  </div>
-  <nav class="presentations">
-  <ol>
-  <% @presentations.each do |presentation| %>
-    <li><%= link_to presentation.title, token_url_path(presentation.url_token, presentation.url_title) %></li>
-    <% end %>
-  </ol>
-  </nav>
-
-<% end %>
-  <p>Angular</p>
-<nav ng-controller="PresentationNavCtrl">
   <ul>
-      <li ng-repeat="presentation in presentations">
-      {{presentation.title}}
-      </li>
-    </ul>
-</nav>
-<form>
-
-<!-- ANGULAR TEST -->
-<input type="text" ng-model="test.text">
-</form>
-<p>{{test.text}}</p>
-
-
-
+  <li ng-repeat="presentation in presentations">{{presentation.title}}</li>
+</ul>
+</div>

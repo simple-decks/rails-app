@@ -1,17 +1,27 @@
 class PresentationsController < ApplicationController
-  respond_to :json, :html
+  respond_to :json
 
   def index
     respond_with Presentation.all
   end
 
   def create
-    respond_with Presentation.create(presentation_params)
+    respond_with Presentation.create(safe_params)
   end
 
   def update
-    respond_with Presentation.update_attributes(presentation_params)
+    respond_with Presentation.update_attributes(safe_params)
   end
+
+#   def create
+#   task = task_list.tasks.create!(safe_params)
+#   render json: task, status: 201
+# end
+
+# def update
+#   task.update_attributes(safe_params)
+#   render nothing: true, status: 204
+# end
 
   # def new
   #   @presentation = Presentation.new
@@ -40,7 +50,7 @@ class PresentationsController < ApplicationController
 
   private
 
-  def presentation_params   
+  def safe_params   
     params.require(:presentation).permit(:title, :url_token, :url_title)
   end
 

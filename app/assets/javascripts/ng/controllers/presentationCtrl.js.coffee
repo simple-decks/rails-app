@@ -1,16 +1,38 @@
-# app.factory "Presentation", ["$resource", ($resource) ->
-#   $resource("/presentations/:id", {id: "@id", format: 'json'})
-# ]
+@sd_app = angular.module("SimpleDecks", ["ngResource"])
 
-# @PresentationsCtrl = ["$scope", "Presentation", ($scope, Presentation) ->
-#   $scope.presentations = Presentation.query()
+# # Sets up routing
+# @sd_app.config(['$routeProvider', ($routeProvider) ->
+#   # Route for '/post'
+#   $routeProvider.when('/presentations', { templateUrl: '../templates/presentations/index.html', controller: 'PresentationsCtrl' } )
 
-#   # $scope.addEntry = ->
-#   #   entry = Entry.save($scope.newEntry)
-#   #   $scope.entries.push(entry)
-#   #   $scope.newEntry = {}
+#   # Default
+#   $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html', controller: 'IndexCtrl' } )
 
-#   # $scope.drawWinner = ->
-#   #   entry = $scope.entries[Math.floor(Math.random()*$scope.entries.length)]
-# ]
-#  
+# ])
+
+@sd_app.factory "Presentation", ["$resource", ($resource) ->
+  $resource("/presentations/:url_token", {id: "@url_token", format: 'json'})
+]
+
+@AnonymousSlideCtrl = ["$scope", "Presentation", ($scope, Presentation) ->
+  $scope.presentations = Presentation.query()
+  returns_qty = 0
+
+  $scope.addPresentation = ->
+    presentation = Presentation.save($scope.newPresentation)
+    $scope.presentations.push(presentation)
+    $scope.newPresentation = {}
+
+  $scope.submitOnDoubleReturn = (keyCode) ->
+    if keyCode == 13
+      returns_qty+= 1
+
+      if returns_qty == 2
+        console.log("returns_qty is 2")
+        $scope.addPresentation()
+        returns_qty = 0
+        console.log("returns_qty: " + returns_qty)
+
+    else
+      returns_qty = 0
+]
