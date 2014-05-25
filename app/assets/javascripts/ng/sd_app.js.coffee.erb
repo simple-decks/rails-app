@@ -1,53 +1,20 @@
 #= require_self
 #= require_tree ./controllers
 
-@sd_app = angular.module("SimpleDecks", ["ngResource"])
-
-# configure our location provider to be in HTML5 mode - see http://omarriott.com/aux/angularjs-html5-routing-rails/
-# @sd_app.config(['$locationProvider', ($locationProvider) ->
-#   $locationProvider.html5Mode(true)
-# ])
+@sd_app = angular.module("SimpleDecks", ["ngResource", "ngRoute"])
 
 # Sets up routing
-# @sd_app.config(['$routeProvider', ($routeProvider) ->
-#   # Route for '/post'
-#   $routeProvider.when('/presentations', { templateUrl: '../templates/presentations/index.html', controller: 'PresentationsCtrl' } )
+@sd_app.config(['$routeProvider', ($routeProvider) ->
+  
+  # Route for 'edit presentation'
+  $routeProvider.when('/:url_token/:url_title/edit', { templateUrl: '/EditPresentation.html', controller: 'EditPresentationCtrl' } )
 
-#   # Default
-#   $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html', controller: 'IndexCtrl' } )
+  # Default
+  $routeProvider.otherwise({ templateUrl: '/AnonymousHome.html', controller: 'AnonymousSlideCtrl' } )
 
-# ])
+])
 
 
 @sd_app.factory "Presentation", ["$resource", ($resource) ->
   $resource("/presentations/:url_token", {id: "@url_token", format: 'json'})
 ]
-
-
-
-# sd_app = angular.module("SimpleDecks", ["ngResource"])
-
-# sd_app.factory "Presentation", ["$resource", ($resource) ->
-#   $resource("/presentations/:url_token", {id: "@url_token", format: 'json'})
-# ]
-
-
-# todoApp = angular.module('todoApp', ['ngResource'])
-
-# todoApp = angular.module('todoApp', ['ngResource', 'mk.editablespan', 'ui.sortable'])
-
-# todoApp.config ($httpProvider) ->
-#   authToken = $("meta[name=\"csrf-token\"]").attr("content")
-#   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
-
-# todoApp.config ($routeProvider, $locationProvider) ->
-#   $locationProvider.html5Mode true
-#   $routeProvider.when '/', redirectTo: '/dashboard'
-#   $routeProvider.when '/dashboard', templateUrl: '/templates/dashboard.html', controller: 'DashboardController'
-#   $routeProvider.when '/task_lists/:list_id', templateUrl: '/templates/task_list.html', controller: 'TodoListController'   
-
-# # Makes AngularJS work with turbolinks.
-# $(document).on 'page:load', ->
-#   $('[ng-app]').each ->
-#     module = $(this).attr('ng-app')
-#     angular.bootstrap(this, [module])

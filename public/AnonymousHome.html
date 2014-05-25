@@ -1,0 +1,12 @@
+<h1>Welcome to SimpleDecks</h1>
+<div ng-controller="AnonymousSlideCtrl">
+
+  <form ng-submit="addPresentation()">
+    <textarea ng-model="newPresentation.title" ng-keyup="submitOnDoubleReturn($event.keyCode)"placeholder="New Presentation"></textarea>
+    <input type="submit" value="Add">
+  </form>
+
+  <ul>
+  <li ng-repeat="presentation in presentations">{{presentation.title}} (url token: {{presentation.url_token}}, url title: {{presentation.url_title}} ) </li>
+</ul>
+</div>
